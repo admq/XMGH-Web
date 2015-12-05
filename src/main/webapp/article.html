@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>文章</title>
+    <link rel="stylesheet" href="/xmgh/static/css/public.css">
+    <link rel="stylesheet" href="/xmgh/static/kindeditor/themes/default/default.css" />
+    <script src="/xmgh/static/js/jquery.min.js"></script>
+    <script charset="utf-8" src="/xmgh/static/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="/xmgh/static/kindeditor/lang/zh_CN.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="content"]', {
+                resizeType : 1,
+                allowPreviewEmoticons : false,
+                allowImageUpload : true,
+                items : [
+                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'emoticons', 'image', 'link', 'fullscreen']
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>list</h2>
+
+    <table id="articles" border="1px"></table>
+
+    <br>
+    <hr>
+    <br>
+
+    <h2>deal</h2>
+    <div style="width: 70%; border: 1px solid black; padding: 10px;">
+        <form action="/xmgh/article/addOrUpdate" method="post">
+            <input type="hidden" name="id"/>
+            <div class="lab">title:</div>
+            <input name="title" style="width: 50%;"/>
+            <br><br>
+            <div class="lab">type:</div>
+            <select name="articletype" id="typeSelect" style="width: 20%;"></select>
+            <br><br>
+            <div class="lab">content:</div>
+            <textarea id="content" name="content" style="width: 50%; min-height: 150px;"></textarea>
+            <input type="submit" value="submit"/>
+        </form>
+
+    </div>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/xmgh/article/getArticles',
+            method: 'get',
+            type: 'json',
+            success: function (data) {
+                $.each(data, function(index, item) {
+                    var innerTr =   "<tr id='user_"+item.id+"'>"+
+                            "<td><a href='/xmgh/article/seeArticle?id="+item.id+"'>"+item.title+"</a></td>"+
+                            "<td>"+item.time+"</td>"+
+                            "<td><a href='javascript:editArticle("+item.id+")'>edit</a></td>"+
+                            "<td><a href='article/del/?id="+item.id+"'>delete</a></td>"+
+                            "</tr>";
+                    $('#articles').append(innerTr);
+                });
+            }
+        });
+
+
+        $.ajax({
+            url: '/xmgh/article/getArticleTypes',
+            method: 'get',
+            type: 'json',
+            success: function(data) {
+                $.each(data, function(index, item) {
+                    $('#typeSelect').append(new Option(item.name, item.id));
+                });
+            }
+        });
+
+    });
+
+
+    function editArticle(id) {
+        $.ajax({
+            url: '/xmgh/article/findByID',
+            method: 'post',
+            data: {id: id},
+            success: function (data) {
+                $('input[name="id"]').val(data.id)
+                $('input[name="title"]').val(data.title);
+                $('input[name="type"]').val(data.type);
+                editor.html(data.content);
+                //$('textarea[name="content"]').val(data.content);
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+getArticleByConditionInJsonWithPaginate
+参数格式
+{'A':a, 'B':b, ... } ==> Map
+a='s_xxxx'
+b='i_xxxx'
+c='l_xxxx'
+s打头的为字符型
+i打头的为整型
+l打头的为limit
+------------------------------------------

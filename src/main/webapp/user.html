@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>用户</title>
+    <link rel="stylesheet" href="static/css/public.css">
+    <script src="static/js/jquery.min.js"></script>
+</head>
+<body>
+
+    <table id="users" border="1px">
+
+    </table>
+
+    <br>
+    <hr>
+    <br>
+
+    <form action="user/addOrUpdate" method="post">
+        <input type="hidden" name="id"/>
+        <input type="hidden" name="roleid"/>
+        <div class="lab">name:</div>
+        <input name="name" /> <br>
+        <div class="lab">realname:</div>
+        <input name="realname" /> <br>
+        <div class="lab">identity:</div>
+        <input name="identity" /> <br>
+        <div class="lab">role:</div>
+        <select id="roleSelect" name="role"></select> <br>
+        <div class="lab">tel:</div>
+        <input name="tel" /> <br>
+        <div class="lab">address:</div>
+        <input name="address" /> <br>
+        <div class="lab">school:</div>
+        <select name="school" id="schoolSelect"></select> <br>
+        <input type="submit" value="submit" />
+    </form>
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: 'user/getUsers',
+            method: 'get',
+            type: 'json',
+            success: function(data) {
+                $.each(data, function(index, item) {
+                    var innerTr =   "<tr id='user_"+item.id+"'>"+
+                                    "<td>"+item.name+"</td>"+
+                                    "<td>"+item.realname+"</td>"+
+                                    "<td>"+item.rolename+"</td>"+
+                                    "<td>"+item.identity+"</td>"+
+                                    "<td>"+item.tel+"</td>"+
+                                    "<td>"+item.address+"</td>"+
+                                    "<td><a href='javascript:editUser("+item.id+")'>edit</a></td>"+
+                                    "<td><a href='javascript:delUser("+item.id+")'>delete</a></td>"+
+                                    "</tr>";
+                    $('#users').append(innerTr);
+                });
+            }
+        });
+
+        $.ajax({
+            url: 'user/getRoles',
+            method: 'get',
+            type: 'json',
+            success: function(data) {
+                $.each(data, function(index, item) {
+                    $('#roleSelect').append(new Option(item.name, item.id));
+                });
+            }
+        });
+
+        $.ajax({
+            url: 'school/getSchools',
+            method: 'get',
+            type: 'json',
+            success: function(data) {
+                $.each(data, function(index, item) {
+                    $('#schoolSelect').append(new Option(item.name, item.id));
+                });
+            }
+        });
+
+
+    });
+
+    function delUser(id) {
+        if(confirm('sure?')) {
+            $.ajax({
+                url: 'user/del',
+                method: 'post',
+                data: {id: id},
+                success: function (data) {
+                    if (data.success) {
+                        alert('success');
+                    } else {
+                        alert('fail');
+                    }
+                }
+            });
+        }
+    }
+
+    function editUser(id) {
+        $.ajax({
+            url: 'user/findByID',
+            method: 'post',
+            data: {id: id},
+            success: function (data) {
+                $('input[name="id"]').val(data.id)
+                $('input[name="roleid"]').val(data.roleid)
+                $('input[name="name"]').val(data.name)
+                $('input[name="realname"]').val(data.realname);
+                $('input[name="identity"]').val(data.identity);
+                $('select[name="role"]').val(data.roleid);
+                $('input[name="tel"]').val(data.tel);
+                $('input[name="address"]').val(data.address);
+                $('select[name="school"]').val(data.schoolid);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
