@@ -8,7 +8,8 @@ import java.util.Map;
  * Created by larry on 10/14/15.
  */
 public class SqlKit {
-    public static String genWhere(Map<String,String> map, boolean paginate) {
+    public static String genWhere(Map<String,String> map, String pre, boolean paginate) {
+        if (pre == null) pre = "";
         StringBuffer sqlsb = new StringBuffer();
         Iterator<String> iterator = map.keySet().iterator();
         sqlsb.append(" where 1=1 ");
@@ -20,7 +21,7 @@ public class SqlKit {
                 if(paginate) limitStr = " limit " + val.substring(2);
             } else {
                 sqlsb.append(" and ");
-                sqlsb.append(key).append("=");
+                sqlsb.append(pre).append(key).append("=");
                 if (val.startsWith("s")) sqlsb.append("'");
                 sqlsb.append(val.substring(2));
                 if (val.startsWith("s")) sqlsb.append("'");

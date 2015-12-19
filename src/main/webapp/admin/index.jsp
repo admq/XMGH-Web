@@ -126,12 +126,8 @@
 	<c:import url="foot.jsp"></c:import>
 </div>
 
-<script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="resource/javascript/framework.js"></script>
-<script type="text/javascript" src="resource/javascript/jquery.zclip.min.js"></script>
-<script type="text/javascript" src="resource/javascript/alert.js"></script>
 <script>
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 		$('a#copy-apiKey').zclip({
 			path:'resource/javascript/ZeroClipboard.swf',
 			copy:function(){return $('input#apiKey').val();}
@@ -139,7 +135,7 @@
 
 		$('.ui.dropdown')
 			.dropdown();
-	});
+	});*/
 </script>
 </body>
 </html>

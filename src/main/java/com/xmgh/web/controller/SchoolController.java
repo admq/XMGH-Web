@@ -56,7 +56,7 @@ public class SchoolController extends BaseController {
 
         int pageNum = ParaKit.forceInteger(getPara("pageNum"));
         int pageSize = ParaKit.forceInteger(getPara("pageSize"));
-        String sql = "from t_school " + SqlKit.genWhere(paraMap, true);
+        String sql = "from t_school " + SqlKit.genWhere(paraMap, null, true);
 
         Page<School> schools = School.dao.paginate(pageNum, pageSize, "select * ", sql);
         renderJson(schools);

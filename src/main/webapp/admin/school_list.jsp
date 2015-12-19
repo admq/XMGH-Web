@@ -20,7 +20,7 @@
 			<div class="four wide column">
 				<div class="verticalMenu">
 					<div id="country" class="ui vertical pointing menu fluid">
-  						<a class="item" href="admin/publish_article.jsp">
+  						<a class="item" href="javascript:void(0)" id="addCountry_btn">
 							<i class="edit icon"></i> <b>  添加国家</b>
   						</a>
 						<%--<a class="active teal item" href="./article_list.jsp">
@@ -75,8 +75,38 @@
 		</div>
 	</div>
 
+	<%-- 添加国家 --%>
+	<div class="ui small modal" id="addCountry">
+		<i class="close icon"></i>
+		<div class="header">
+			添加国家
+		</div>
+		<div class="image content">
+			<form class="ui form" action="" method="post">
+				<div class="field">
+					<div class="two fields">
+						<div class="field">
+							<input type="text" name="name" placeholder="国家名称">
+						</div>
+						<div class="field">
+							<input type="text" name="englishname" placeholder="国家英文名称">
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<div id="addCountry_submit_btn" class="ui green right floated button">
+						添加
+					</div>
+					<div id="addCountry_hide_btn" class="ui black deny right floated button">
+						取消
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<%-- 添加学校弹窗 --%>
-	<div class="ui small modal">
+	<div class="ui small modal" id="addSchool">
 		<i class="close icon"></i>
 		<div class="header">
 			添加学校
@@ -113,7 +143,7 @@
 					<div id="addSchool_submit_btn" class="ui green right floated button">
 						添加
 					</div>
-					<div id="addArticleType_hide_btn" class="ui black deny right floated button">
+					<div id="addSchool_hide_btn" class="ui black deny right floated button">
 						取消
 					</div>
 				</div>

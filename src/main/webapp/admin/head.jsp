@@ -16,9 +16,11 @@
     <title></title>
     <base href="<%=basePath%>" />
     <link type="text/css" rel="stylesheet" href="admin/resource/css/framework.css" />
+    <%--<link type="text/css" rel="stylesheet" href="admin/semantic/semantic.min.css" />--%>
     <link type="text/css" rel="stylesheet" href="admin/resource/css/main.css" />
     <script type="text/javascript" src="admin/resource/javascript/jquery.min.js"></script>
     <script type="text/javascript" src="admin/resource/javascript/framework.js"></script>
+    <%--<script type="text/javascript" src="admin/semantic/semantic.min.js"></script>--%>
   <script type="text/javascript" src="admin/controller/common.js"></script>
 </head>
 <body>
@@ -57,7 +59,7 @@
         <a class="item" href="article_list.jsp"><i class="cloud icon"></i>产品</a>--%>
         <a class="item" href="admin/article_list.jsp"><i class="file icon"></i>文章</a>
         <a class="item" href="admin/group_list.jsp"><i class="github icon"></i>圈子</a>
-        <a class="item" href="admin/article_list.jsp"><i class="user icon"></i>用户</a>
+        <a class="item" href="admin/user_list.jsp"><i class="user icon"></i>用户</a>
         <%--<a class="item" href="article_list.jsp"><i class="users icon"></i>角色</a>--%>
         <a class="item" href="admin/school_list.jsp"><i class="doctor icon"></i>学校</a>
         <a class="item" href="admin/user_profile.jsp"><i class="info icon"></i>个人账户</a>

@@ -84,7 +84,7 @@ public class ArticleController extends BaseController {
 
         int pageNum = ParaKit.forceInteger(getPara("pageNum"));
         int pageSize = ParaKit.forceInteger(getPara("pageSize"));
-        String sql = "from t_article " + SqlKit.genWhere(paraMap, true);
+        String sql = "from t_article " + SqlKit.genWhere(paraMap, null, true);
 
         Page<Article> articles = Article.dao.paginate(pageNum, pageSize, "select * ", sql);
         //Integer[] rei = ParaKit.parsePaginate(paraMap.get("page").substring(2));// [pageSize, pageNum]

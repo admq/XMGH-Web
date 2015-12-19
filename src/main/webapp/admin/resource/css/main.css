@@ -423,10 +423,20 @@ footer {
 
 .item:hover {
     cursor: pointer;
-    background-color: #daf0ff;
+    /*background-color: #daf0ff;*/
     border-radius: 5px;
 }
 
 .active_item {
     background-color: #127cd2;
+}
+
+.user_item {
+    /*margin-right: 10px;*/
+    /*min-width: 150px;*/
+    font-size: 14px;
+}
+
+.yuan {
+    border-radius: 14px;
 }

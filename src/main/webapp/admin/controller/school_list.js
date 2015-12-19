@@ -8,15 +8,19 @@ var scl = {
         scl.loadCountry();
         scl.loadAllSchool();
         $("#addSchool_btn").click(function() {
-            $('.ui.modal')
+            $('#addSchool')
+                .modal('show');
+        });
+        $("#addCountry_btn").click(function() {
+            $('#addCountry')
                 .modal('show');
         });
 
         $("#addSchool_submit_btn").click(function () {
-            var name = $('input[name="name"]').val();
-            var shortname = $('input[name="shortname"]').val();
-            var englishname = $('input[name="englishname"]').val();
-            var countryid = $('input[name="countryid"]').val();
+            var name = $('#addSchool input[name="name"]').val();
+            var shortname = $('#addSchool input[name="shortname"]').val();
+            var englishname = $('#addSchool input[name="englishname"]').val();
+            var countryid = $('#addSchool input[name="countryid"]').val();
             common.postJson('/xmgh/school/addOrUpdate',{name:name, englishname:englishname, shortname:shortname, countryid:countryid},function(data) {
                 if(data.success) {
                     alert("成功");
@@ -24,7 +28,21 @@ var scl = {
                     $('.ui.modal')
                         .modal('hide');
                 }
-            })
+            });
+        });
+
+        $("#addCountry_submit_btn").click(function () {
+            var name = $('#addCountry input[name="name"]').val();
+            var englishname = $('#addCountry input[name="englishname"]').val();
+            common.postJson('/xmgh/country/addOrUpdate',{name:name, englishname:englishname},function(data) {
+                if(data.success) {
+                    alert("成功");
+                    ///pal.loadArticleType();
+                    $('.ui.modal')
+                        .modal('hide');
+                    window.location.reload();
+                }
+            });
         });
     },
     loadCountry: function() {
