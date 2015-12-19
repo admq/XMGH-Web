@@ -22,7 +22,7 @@ var gl = {
 
     submitForm: function() {
         var name = $('input[name="name"]').val();
-        var schoolid = $('input[name="schoolid"]').val();
+        var schoolid = $('input[name="add_schoolid"]').val();
         var describe = $('textarea[name="describe"]').val();
         if(!name || !schoolid || !describe) {
             alert('请填写完整')

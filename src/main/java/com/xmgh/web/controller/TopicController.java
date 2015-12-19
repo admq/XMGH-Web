@@ -1,13 +1,11 @@
 package com.xmgh.web.controller;
 
-import com.jfinal.plugin.activerecord.DbKit;
-import com.jfinal.plugin.activerecord.DbPro;
 import com.jfinal.plugin.activerecord.Page;
-import com.xmgh.web.domain.Article;
 import com.xmgh.web.domain.Reply;
 import com.xmgh.web.domain.Topic;
-import com.xmgh.web.domain.Topic;
+import com.xmgh.web.util.DateKit;
 import com.xmgh.web.util.ParaKit;
+import com.xmgh.web.util.SessionKit;
 
 import java.util.Date;
 import java.util.List;
@@ -24,12 +22,14 @@ public class TopicController extends BaseController {
     public void addOrUpdate() {
         Topic topic = new Topic();
 
+        int userid = SessionKit.getCurrentUser().get("id");
+
         topic.set("id", ParaKit.forceInteger(getPara("id")));
         topic.set("title", getPara("title"));
-        topic.set("author", getPara("author"));
+        topic.set("author", userid); //getPara("author")
         topic.set("content", getPara("content"));
-        topic.set("time", new Date());
-        topic.set("type", getPara("type"));
+        topic.set("time", DateKit.getFormatNowString());
+        topic.set("type", 0);//getPara("type")
         topic.set("belong", getPara("belong"));
 
         Topic tic = Topic.dao.findById(ParaKit.forceInteger(getPara("id")));
@@ -40,7 +40,10 @@ public class TopicController extends BaseController {
             success = topic.update();
         }
 
-        renderSuccessFlag(success);
+        //renderSuccessFlag(success);
+        if(success) {
+            redirect("/group/goInGroup?id="+getPara("belong"));
+        }
     }
 
     public void del() {
@@ -87,7 +90,7 @@ public class TopicController extends BaseController {
     public void seeTopic() {
         int tid = ParaKit.forceInteger(getPara("id"));
         Topic topic = Topic.dao.findById(tid);
-        List<Reply> replys = Reply.dao.find("select * from t_reply where topicid="+tid);
+        List<Reply> replys = Reply.dao.find("select * from t_reply where topicid="+tid+" order by id desc");
         setAttr("topic", topic);
         setAttr("replys", replys);
         renderJsp("/admin/seeTopic.jsp");

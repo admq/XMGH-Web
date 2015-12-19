@@ -27,9 +27,12 @@
     							${topic.title}
   							</div>
 						</h3>
-						${topic.content}
+						<div class="article_content">
+							${topic.content}
+						</div>
 					</div>
 				</div>
+				<hr>
                 <!--the products content-->
 				<div class="ui comments">
 					<c:forEach var="item" items="${replys}">

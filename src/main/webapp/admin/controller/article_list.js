@@ -51,7 +51,7 @@ var al = {
     },
 
     appendArticle: function(data) {
-        $('#article_list').empty();
+        $('#school_list').empty();
         var html = $('#dis_tmpl').html();
         $.each(data, function(index, item) {
             var inn = html

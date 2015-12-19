@@ -19,9 +19,9 @@
 			<!--the vertical menu-->
 			<div class="four wide column">
 				<div class="verticalMenu">
-					<div id="alType" class="ui vertical pointing menu fluid">
+					<div id="country" class="ui vertical pointing menu fluid">
   						<a class="item" href="admin/publish_article.jsp">
-							<i class="edit icon"></i> <b>  发布文章</b>
+							<i class="edit icon"></i> <b>  添加国家</b>
   						</a>
 						<%--<a class="active teal item" href="./article_list.jsp">
                           <i class="cloud icon"></i> 我的产品
@@ -35,15 +35,18 @@
 			<!--the Devicelist-->
 			<div class="twelve wide column">
 				<div class="pageHeader">
-					<div class="segment">
+					<%--<div class="segment">
 						<h3 class="ui dividing header">
   							<i class="large cloud icon"></i>
-  							<div class="content">
-    							文章列表
+  							<div class="content" style="width: 80%;">
+    							学校列表
     							<div class="sub header">筛选结果如下</div>
+								<a style="float: right;" href="#">添加学校</a>
   							</div>
 						</h3>
-					</div>
+					</div>--%>
+					<button class="ui right floated button" id="addSchool_btn">添加学校</button>
+
 				</div>
                 <!--the products content-->
 				<div id="dis_tmpl" style="display:none;">
@@ -51,8 +54,8 @@
                     <div class="column verborder">
 							<div class="ui info segment">
                                 <h5 class="ui header">
-                                    <a target="_blank" href="v_href">v_title <span class="ui type label">v_hot</span></a>
-                                    <div class="sub header">v_describe</div>
+                                    <a target="_blank" href="v_href">v_name <span class="ui type label">v_rank</span></a>
+                                    <%--<div class="sub header">v_describe</div>--%>
                                 </h5>
 							</div>
                     </div>
@@ -64,7 +67,7 @@
   					</div>
 				</div>
 				</div>
-				<div id="article_list"></div>
+				<div id="school_list"></div>
                 <!--the pagination-->
 				<div id="pagination"></div>
 			</div>
@@ -72,17 +75,70 @@
 		</div>
 	</div>
 
+	<%-- 添加学校弹窗 --%>
+	<div class="ui small modal">
+		<i class="close icon"></i>
+		<div class="header">
+			添加学校
+		</div>
+		<div class="image content">
+			<form class="ui form" action="" method="post">
+				<div class="field">
+					<div class="two fields">
+						<div class="field">
+							<input type="text" name="name" placeholder="学校名称">
+						</div>
+						<div class="field">
+							<input type="text" name="englishname" placeholder="学校英文名称">
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<div class="two fields">
+						<div class="field">
+							<input type="text" name="shortname" placeholder="学校短名称">
+						</div>
+						<div class="field">
+							<div class="ui selection dropdown">
+								<input type="hidden" name="countryid" value="">
+								<div class="text">所属国家</div>
+								<div class="menu">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field">
+					<div id="addSchool_submit_btn" class="ui green right floated button">
+						添加
+					</div>
+					<div id="addArticleType_hide_btn" class="ui black deny right floated button">
+						取消
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<c:import url="foot.jsp"></c:import>
 </div>
 
 <script type="text/javascript" src="admin/controller/common.js"></script>
-<script type="text/javascript" src="admin/controller/article_list.js"></script>
+<script type="text/javascript" src="admin/controller/school_list.js"></script>
 <script>
     $(document).ready(function(){
+		$('.ui.selection.dropdown')
+				.dropdown();
+
 		$('.ui.dropdown')
-			.dropdown()
-        ;
+				.dropdown();
+
+		$('.ui.checkbox')
+				.checkbox();
 	});
+
+
 </script>
 </body>
 </html>

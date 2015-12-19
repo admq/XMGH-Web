@@ -61,7 +61,7 @@ var common = {
                 ne = true;
             }
         }
-        if(currentPage >= pageCount) {
+        if(!pageCount || currentPage >= pageCount) {
             html += '<a class="icon disabled item"><i class="icon right arrow"></i></a>';
         } else {
             html += '<a class="icon item" num="'+(currentPage+1)+'"><i class="icon right arrow"></i></a>';

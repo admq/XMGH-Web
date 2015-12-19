@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <title>小马过河 | 后台管理</title>
-    <link type="text/css" rel="stylesheet" href="resource/css/framework.css" />
     <link rel="stylesheet" href="/xmgh/static/kindeditor/themes/default/default.css" />
-    <link type="text/css" rel="stylesheet" href="resource/css/main.css" />
 </head>
 <body>
 <div class="page">
@@ -120,12 +118,9 @@
 	<c:import url="foot.jsp"></c:import>
 </div>
 
-<script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="resource/javascript/framework.js"></script>
-<script type="text/javascript" src="controller/common.js"></script>
 <script charset="utf-8" src="/xmgh/static/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="/xmgh/static/kindeditor/lang/zh_CN.js"></script>
-<script type="text/javascript" src="controller/publish_article.js"></script>
+<script type="text/javascript" src="admin/controller/publish_article.js"></script>
 <script>
 	$('.ui.selection.dropdown')
       .dropdown();

@@ -415,3 +415,18 @@ footer {
 #copyrights .fl {
 	float:left;
 }
+
+.article_content {
+    padding: 10px 0px;
+}
+
+
+.item:hover {
+    cursor: pointer;
+    background-color: #daf0ff;
+    border-radius: 5px;
+}
+
+.active_item {
+    background-color: #127cd2;
+}

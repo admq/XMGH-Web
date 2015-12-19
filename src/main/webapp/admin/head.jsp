@@ -7,9 +7,19 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%
+  String path = request.getContextPath();
+  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title></title>
+    <base href="<%=basePath%>" />
+    <link type="text/css" rel="stylesheet" href="admin/resource/css/framework.css" />
+    <link type="text/css" rel="stylesheet" href="admin/resource/css/main.css" />
+    <script type="text/javascript" src="admin/resource/javascript/jquery.min.js"></script>
+    <script type="text/javascript" src="admin/resource/javascript/framework.js"></script>
+  <script type="text/javascript" src="admin/controller/common.js"></script>
 </head>
 <body>
   <!--header begin-->
@@ -42,15 +52,15 @@
   <div class="ui teal inverted menu">
     <div class="bigcontainer">
       <div class="menu"> <!--right-->
-        <a class="active item" href="./index.jsp"><i class="home icon"></i>管理首页</a>
+        <a class="active item" href="admin/index.jsp"><i class="home icon"></i>管理首页</a>
         <%--<a class="item" href="devices_list.jsp"><i class="sitemap icon"></i>设备</a>
         <a class="item" href="article_list.jsp"><i class="cloud icon"></i>产品</a>--%>
-        <a class="item" href="article_list.jsp"><i class="file icon"></i>文章</a>
-        <a class="item" href="group_list.jsp"><i class="github icon"></i>圈子</a>
-        <a class="item" href="article_list.jsp"><i class="user icon"></i>用户</a>
+        <a class="item" href="admin/article_list.jsp"><i class="file icon"></i>文章</a>
+        <a class="item" href="admin/group_list.jsp"><i class="github icon"></i>圈子</a>
+        <a class="item" href="admin/article_list.jsp"><i class="user icon"></i>用户</a>
         <%--<a class="item" href="article_list.jsp"><i class="users icon"></i>角色</a>--%>
-        <a class="item" href="article_list.jsp"><i class="doctor icon"></i>学校</a>
-        <a class="item" href="user_profile.jsp"><i class="info icon"></i>个人账户</a>
+        <a class="item" href="admin/school_list.jsp"><i class="doctor icon"></i>学校</a>
+        <a class="item" href="admin/user_profile.jsp"><i class="info icon"></i>个人账户</a>
       </div>
     </div>
   </div>

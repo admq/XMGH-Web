@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <title>账户设置 | Yeelink用户中心</title>
-    <link type="text/css" rel="stylesheet" href="resource/css/framework.css" />
-    <link type="text/css" rel="stylesheet" href="resource/css/main.css" />
 </head>
 <body>
 <div class="page">
@@ -101,8 +99,6 @@
 	</div>
 </footer>
 
-<script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="resource/javascript/framework.js"></script>
 <script type="text/javascript">
 	$('.ui.dropdown')
 	.dropdown();

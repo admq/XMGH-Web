@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta name="renderer" content="webkit">
     <title>小马过河 | 后台管理</title>
-    <link type="text/css" rel="stylesheet" href="resource/css/framework.css" />
-    <link type="text/css" rel="stylesheet" href="resource/css/main.css" />
+    <%--<link type="text/css" rel="stylesheet" href="resource/css/framework.css" />--%>
+    <%--<link type="text/css" rel="stylesheet" href="resource/css/main.css" />--%>
 </head>
 <body>
 <div class="page">
@@ -91,7 +91,7 @@
 						</div>
 						<div class="field">
 							<div class="ui selection dropdown">
-								<input type="hidden" name="schoolid" value="">
+								<input type="hidden" name="add_schoolid" value="">
 								<div class="text">所属学校</div>
 								<%--<i class="dropdown icon"></i>--%>
 								<div class="menu" id="select_school">
@@ -121,10 +121,10 @@
 	<c:import url="foot.jsp"></c:import>
 </div>
 
-<script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="resource/javascript/framework.js"></script>
-<script type="text/javascript" src="controller/common.js"></script>
-<script type="text/javascript" src="controller/group_list.js"></script>
+<%--<script type="text/javascript" src="resource/javascript/jquery.min.js"></script>--%>
+<%--<script type="text/javascript" src="resource/javascript/framework.js"></script>--%>
+<script type="text/javascript" src="admin/controller/common.js"></script>
+<script type="text/javascript" src="admin/controller/group_list.js"></script>
 <script>
     $(document).ready(function(){
 		$('.ui.dropdown')

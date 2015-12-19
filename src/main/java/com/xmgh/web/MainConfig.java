@@ -34,6 +34,7 @@ public class MainConfig extends JFinalConfig {
         me.add("/admin", AdminController.class);
         me.add("/file", FileController.class);
         me.add("/apply", ApplyController.class);
+        me.add("/country", CountryController.class);
 
         me.add("/app", AppIndexController.class);
     }
@@ -64,6 +65,7 @@ public class MainConfig extends JFinalConfig {
         activeRecordPlugin.addMapping("t_apply", Apply.class);
         activeRecordPlugin.addMapping("t_applystep", Applystep.class);
         activeRecordPlugin.addMapping("t_file", DFile.class);
+        activeRecordPlugin.addMapping("t_country", Country.class);
 
     }
 
